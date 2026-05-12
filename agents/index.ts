@@ -17,9 +17,9 @@ export { ReceiptAnalysisAgent } from './receiptAgent';
 export function initializeAgentSystem(apiKey?: string) {
   const receiptAgent = new (require('./receiptAgent')).ReceiptAnalysisAgent(apiKey);
   const orchestrator = new (require('./agentOrchestrator')).AgentOrchestrator();
-  
+
   orchestrator.registerAgent(receiptAgent);
-  
+
   return {
     receiptAgent,
     orchestrator,

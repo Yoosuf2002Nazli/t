@@ -78,19 +78,21 @@ describe('ReceiptAnalysisAgent', () => {
     });
 
     test('should warn if no API key', () => {
-      // Temporarily clear the env var
-      const originalKey = process.env.EXPO_PUBLIC_API_KEY;
-      delete process.env.EXPO_PUBLIC_API_KEY;
-      
       const consoleWarnSpy = jest.spyOn(console, 'warn').mockImplementation();
+      const originalEnv = process.env.EXPO_PUBLIC_API_KEY;
+      delete process.env.EXPO_PUBLIC_API_KEY;
+
       new ReceiptAnalysisAgent();
+
       expect(consoleWarnSpy).toHaveBeenCalledWith('ReceiptAnalysisAgent: No API key provided');
-      consoleWarnSpy.mockRestore();
-      
-      // Restore the env var
-      if (originalKey) {
-        process.env.EXPO_PUBLIC_API_KEY = originalKey;
+
+      if (originalEnv) {
+        process.env.EXPO_PUBLIC_API_KEY = originalEnv;
+      } else {
+        delete process.env.EXPO_PUBLIC_API_KEY;
       }
+
+      consoleWarnSpy.mockRestore();
     });
   });
 });

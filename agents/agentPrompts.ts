@@ -37,7 +37,7 @@ Return ONLY a valid JSON object following the provided schema, with no markdown 
     return {
       type: "OBJECT",
       properties: {
-        isReadable: { 
+        isReadable: {
           type: "BOOLEAN",
           description: "Whether the receipt data could be successfully extracted from the image."
         },
@@ -45,7 +45,7 @@ Return ONLY a valid JSON object following the provided schema, with no markdown 
         date: { type: "STRING" },
         time: { type: "STRING" },
         total: { type: "NUMBER" },
-        category: { 
+        category: {
           type: "STRING",
           description: `Must be one of: ${Object.values(Category).join(", ")}`
         },
@@ -56,7 +56,7 @@ Return ONLY a valid JSON object following the provided schema, with no markdown 
             properties: {
               name: { type: "STRING" },
               price: { type: "NUMBER" },
-              category: { 
+              category: {
                 type: "STRING",
                 description: `Must be one of: ${Object.values(Category).join(", ")}. Default to "Other" if completely unsure.`
               }
